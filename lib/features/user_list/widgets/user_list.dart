@@ -45,6 +45,7 @@ class UserList extends StatelessWidget {
       controller: refreshController,
       onLoading: onLoading,
       child: ListView.builder(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         physics: const BouncingScrollPhysics(),
         itemCount: users.length,
         itemBuilder: (context, index) => UserCard(

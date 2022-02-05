@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:github_user_finder/features/user_detail/pages/user_detail_page.dart';
 import 'package:github_user_finder/models/models.dart';
 
 class UserCard extends StatelessWidget {
@@ -12,7 +13,12 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        // onTap: () => Get.to(() => UserDetailPage(userModel: userModel)),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UserDetailPage(userModel: userModel),
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
