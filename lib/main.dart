@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:github_user_finder/core/injection.dart';
+import 'package:github_user_finder/features/user_list/pages/user_list_page.dart';
+import 'package:github_user_finder/utils/utils.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,8 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Github User Finder',
+      theme: Themes.lightTheme,
+      darkTheme: Themes.darkTheme,
+      home: const UserListPage(),
     );
   }
 }

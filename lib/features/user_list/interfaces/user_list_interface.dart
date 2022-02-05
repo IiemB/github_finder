@@ -1,10 +1,12 @@
-import 'package:github_user_finder/features/user_list/bloc/user_bloc.dart';
+import 'package:dartz/dartz.dart';
+import 'package:github_user_finder/core/core.dart';
+import 'package:github_user_finder/models/user_model/user_model.dart';
 
 abstract class UserListInterface {
   /// get user based on input queries
-  Future<UserState> getUsers({
+  Future<Either<Failure<String>, List<UserModel>>> getUsers({
     required String query,
     required int page,
-    int perPage = 50,
+    required int perPage,
   });
 }
