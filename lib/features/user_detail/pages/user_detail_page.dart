@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:github_user_finder/models/models.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UserDetailPage extends StatelessWidget {
   final UserModel userModel;
@@ -55,8 +56,9 @@ class UserDetailPage extends StatelessWidget {
                 subtitle: Text(userModel.score.toString()),
               ),
               ListTile(
+                onTap: () async => await launch(userModel.html_url!),
                 title: const Text('Url'),
-                subtitle: Text(userModel.url!),
+                subtitle: Text(userModel.html_url!),
               ),
             ],
           ),
