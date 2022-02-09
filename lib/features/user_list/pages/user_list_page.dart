@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_user_finder/core/core.dart';
 import 'package:github_user_finder/features/user_list/cubit/user_cubit.dart';
 import 'package:github_user_finder/features/user_list/widgets/user_list.dart';
+import 'package:github_user_finder/utils/constants.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class UserListPage extends StatefulWidget {
+  static const String routeName = '/userListpage';
+
   const UserListPage({Key? key}) : super(key: key);
 
   @override
@@ -13,7 +16,7 @@ class UserListPage extends StatefulWidget {
 }
 
 class _UserListPageState extends State<UserListPage> {
-  final _userBloc = getIt<UserCubit>();
+  final _userCubit = getIt<UserCubit>();
 
   final _refreshController = RefreshController();
   final _searchController = TextEditingController();
@@ -29,28 +32,21 @@ class _UserListPageState extends State<UserListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Github User Finder',
-              style: TextStyle(
-                fontSize: 28,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
+            const Text(
+              'Search User',
+              style: TextStyle(fontSize: 28),
             ),
             BlocBuilder<UserCubit, UserState>(
-              bloc: _userBloc,
+              bloc: _userCubit,
               buildWhen: (a, b) => (b is UserStateFetchedData),
               builder: (context, state) {
                 if (state is UserStateFetchedData) {
                   return Text(
-                    _userBloc.userList.length.toString(),
-                    style: TextStyle(
-                      fontSize: 28,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
+                    _userCubit.userList.length.toString(),
+                    style: const TextStyle(fontSize: 28),
                   );
                 }
                 return const SizedBox.shrink();
@@ -60,7 +56,7 @@ class _UserListPageState extends State<UserListPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: [
             TextFormField(
@@ -74,25 +70,23 @@ class _UserListPageState extends State<UserListPage> {
               onEditingComplete: () async {
                 if (_searchController.text.isNotEmpty) {
                   FocusManager.instance.primaryFocus?.unfocus();
-                  await _userBloc.fetchNewData(
+                  await _userCubit.fetchNewData(
                     query: _searchController.text,
-                    page: _userBloc.currentPage,
+                    page: _userCubit.currentPage,
                   );
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Query is empty')),
-                  );
+                  showAppSnackBar(context, 'Query is empty');
                 }
               },
             ),
             const SizedBox.square(dimension: 8),
             Expanded(
               child: BlocConsumer<UserCubit, UserState>(
-                bloc: _userBloc,
+                bloc: _userCubit,
                 listener: _userListener,
                 buildWhen: (a, b) => (b is UserStateFetchedData ||
-                    (b is UserStateLoading && _userBloc.userList.isEmpty) ||
-                    (b is UserStateError && _userBloc.userList.isEmpty)),
+                    (b is UserStateLoading && _userCubit.userList.isEmpty) ||
+                    (b is UserStateError && _userCubit.userList.isEmpty)),
                 builder: (context, state) {
                   if (state is UserStateInital) {
                     return const Center(
@@ -110,13 +104,13 @@ class _UserListPageState extends State<UserListPage> {
                       return const Center(child: Text('No User Found'));
                     } else {
                       return UserList(
-                        users: _userBloc.userList,
+                        users: _userCubit.userList,
                         refreshController: _refreshController,
                         onLoading: () async {
                           if (_searchController.text.isNotEmpty) {
-                            await _userBloc.fetchData(
+                            await _userCubit.fetchData(
                               query: _searchController.text,
-                              page: _userBloc.currentPage,
+                              page: _userCubit.currentPage,
                             );
 
                             _refreshController.loadComplete();
@@ -142,10 +136,8 @@ class _UserListPageState extends State<UserListPage> {
   }
 
   void _userListener(BuildContext context, UserState state) {
-    debugPrint(state.toString());
     if (state is UserStateError) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(state.errorMessage)));
+      showAppSnackBar(context, state.errorMessage);
     }
   }
 }

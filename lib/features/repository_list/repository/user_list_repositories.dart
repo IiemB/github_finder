@@ -1,17 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:github_user_finder/core/failure.dart';
-import 'package:github_user_finder/features/repository_list/interfaces/repository_list_interface.dart';
+import 'package:github_user_finder/features/user_list/interfaces/user_list_interface.dart';
 import 'package:github_user_finder/models/models.dart';
 import 'package:github_user_finder/utils/utils.dart';
 import 'package:injectable/injectable.dart';
 
-@LazySingleton(as: RepositoryListInterface)
-class RepositoryListRepositories extends RepositoryListInterface {
+@LazySingleton(as: UserListInterface)
+class UserListRepositories extends UserListInterface {
   final _dio = Dio();
 
   @override
-  Future<Either<Failure<String>, List<RepositoryModel>>> getUsers({
+  Future<Either<Failure<String>, List<UserModel>>> getUsers({
     required String query,
     required int page,
     required int perPage,
@@ -27,8 +27,7 @@ class RepositoryListRepositories extends RepositoryListInterface {
       );
 
       if (_response.statusCode == 200 || _response.statusCode == 201) {
-        final _responseUserModel =
-            ResponseRepositoryModel.fromJson(_response.data);
+        final _responseUserModel = ResponseUserModel.fromJson(_response.data);
 
         if (_responseUserModel.total_count != null &&
             _responseUserModel.items != null) {

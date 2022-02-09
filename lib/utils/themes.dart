@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Themes {
-  static String? defaultFont = GoogleFonts.lato().fontFamily;
+  static final String? _defaultFont = GoogleFonts.lato().fontFamily;
 
   static ThemeData lightTheme = FlexThemeData.light(
     scheme: FlexScheme.sanJuanBlue,
@@ -19,7 +19,7 @@ class Themes {
     lightIsWhite: false,
     useSubThemes: true,
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    fontFamily: defaultFont,
+    fontFamily: _defaultFont,
     subThemesData: const FlexSubThemesData(
       useTextTheme: true,
       fabUseShape: true,
@@ -52,7 +52,7 @@ class Themes {
     darkIsTrueBlack: false,
     useSubThemes: true,
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    fontFamily: defaultFont,
+    fontFamily: _defaultFont,
     subThemesData: const FlexSubThemesData(
       useTextTheme: true,
       fabUseShape: true,

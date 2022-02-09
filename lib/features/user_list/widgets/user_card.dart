@@ -13,11 +13,10 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        onTap: () => Navigator.push(
+        onTap: () => Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => UserDetailPage(userModel: userModel),
-          ),
+          UserDetailPage.routeName,
+          arguments: userModel,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -25,7 +24,7 @@ class UserCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Hero(
-                tag: Key(userModel.avatar_url!),
+                tag: userModel.id.toString(),
                 child: CircleAvatar(
                   radius: 24,
                   backgroundImage: NetworkImage(userModel.avatar_url!),

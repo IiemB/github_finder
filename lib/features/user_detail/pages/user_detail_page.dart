@@ -5,6 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 class UserDetailPage extends StatelessWidget {
   final UserModel userModel;
 
+  static const String routeName = '/userDetailPage';
+
   const UserDetailPage({
     Key? key,
     required this.userModel,
@@ -24,7 +26,7 @@ class UserDetailPage extends StatelessWidget {
           child: Column(
             children: [
               Hero(
-                tag: Key(userModel.avatar_url!),
+                tag: userModel.id.toString(),
                 child: Container(
                   height: _size,
                   width: _size,
