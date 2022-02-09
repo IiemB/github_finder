@@ -35,7 +35,7 @@ _$_RepositoryModel _$$_RepositoryModelFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String? ?? '',
       html_url: json['html_url'] as String? ?? '',
       private: json['private'] as bool? ?? false,
-      descriptions: json['descriptions'] as String? ?? '',
+      description: json['description'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_RepositoryModelToJson(_$_RepositoryModel instance) =>
@@ -48,5 +48,5 @@ Map<String, dynamic> _$$_RepositoryModelToJson(_$_RepositoryModel instance) =>
       'url': instance.url,
       'html_url': instance.html_url,
       'private': instance.private,
-      'descriptions': instance.descriptions,
+      'description': instance.description,
     };

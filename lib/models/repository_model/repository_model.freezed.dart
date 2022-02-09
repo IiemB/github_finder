@@ -208,7 +208,7 @@ class _$RepositoryModelTearOff {
       String? url = '',
       String? html_url = '',
       bool? private = false,
-      String? descriptions = ''}) {
+      String? description = ''}) {
     return _RepositoryModel(
       id: id,
       owner: owner,
@@ -218,7 +218,7 @@ class _$RepositoryModelTearOff {
       url: url,
       html_url: html_url,
       private: private,
-      descriptions: descriptions,
+      description: description,
     );
   }
 
@@ -240,7 +240,7 @@ mixin _$RepositoryModel {
   String? get url => throw _privateConstructorUsedError;
   String? get html_url => throw _privateConstructorUsedError;
   bool? get private => throw _privateConstructorUsedError;
-  String? get descriptions => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -262,7 +262,7 @@ abstract class $RepositoryModelCopyWith<$Res> {
       String? url,
       String? html_url,
       bool? private,
-      String? descriptions});
+      String? description});
 
   $UserModelCopyWith<$Res>? get owner;
 }
@@ -286,7 +286,7 @@ class _$RepositoryModelCopyWithImpl<$Res>
     Object? url = freezed,
     Object? html_url = freezed,
     Object? private = freezed,
-    Object? descriptions = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -321,9 +321,9 @@ class _$RepositoryModelCopyWithImpl<$Res>
           ? _value.private
           : private // ignore: cast_nullable_to_non_nullable
               as bool?,
-      descriptions: descriptions == freezed
-          ? _value.descriptions
-          : descriptions // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -356,7 +356,7 @@ abstract class _$RepositoryModelCopyWith<$Res>
       String? url,
       String? html_url,
       bool? private,
-      String? descriptions});
+      String? description});
 
   @override
   $UserModelCopyWith<$Res>? get owner;
@@ -383,7 +383,7 @@ class __$RepositoryModelCopyWithImpl<$Res>
     Object? url = freezed,
     Object? html_url = freezed,
     Object? private = freezed,
-    Object? descriptions = freezed,
+    Object? description = freezed,
   }) {
     return _then(_RepositoryModel(
       id: id == freezed
@@ -418,9 +418,9 @@ class __$RepositoryModelCopyWithImpl<$Res>
           ? _value.private
           : private // ignore: cast_nullable_to_non_nullable
               as bool?,
-      descriptions: descriptions == freezed
-          ? _value.descriptions
-          : descriptions // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -438,7 +438,7 @@ class _$_RepositoryModel implements _RepositoryModel {
       this.url = '',
       this.html_url = '',
       this.private = false,
-      this.descriptions = ''});
+      this.description = ''});
 
   factory _$_RepositoryModel.fromJson(Map<String, dynamic> json) =>
       _$$_RepositoryModelFromJson(json);
@@ -468,11 +468,11 @@ class _$_RepositoryModel implements _RepositoryModel {
   final bool? private;
   @JsonKey()
   @override
-  final String? descriptions;
+  final String? description;
 
   @override
   String toString() {
-    return 'RepositoryModel(id: $id, owner: $owner, name: $name, node_id: $node_id, full_name: $full_name, url: $url, html_url: $html_url, private: $private, descriptions: $descriptions)';
+    return 'RepositoryModel(id: $id, owner: $owner, name: $name, node_id: $node_id, full_name: $full_name, url: $url, html_url: $html_url, private: $private, description: $description)';
   }
 
   @override
@@ -489,7 +489,7 @@ class _$_RepositoryModel implements _RepositoryModel {
             const DeepCollectionEquality().equals(other.html_url, html_url) &&
             const DeepCollectionEquality().equals(other.private, private) &&
             const DeepCollectionEquality()
-                .equals(other.descriptions, descriptions));
+                .equals(other.description, description));
   }
 
   @override
@@ -503,7 +503,7 @@ class _$_RepositoryModel implements _RepositoryModel {
       const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(html_url),
       const DeepCollectionEquality().hash(private),
-      const DeepCollectionEquality().hash(descriptions));
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
@@ -526,7 +526,7 @@ abstract class _RepositoryModel implements RepositoryModel {
       String? url,
       String? html_url,
       bool? private,
-      String? descriptions}) = _$_RepositoryModel;
+      String? description}) = _$_RepositoryModel;
 
   factory _RepositoryModel.fromJson(Map<String, dynamic> json) =
       _$_RepositoryModel.fromJson;
@@ -548,7 +548,7 @@ abstract class _RepositoryModel implements RepositoryModel {
   @override
   bool? get private;
   @override
-  String? get descriptions;
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$RepositoryModelCopyWith<_RepositoryModel> get copyWith =>

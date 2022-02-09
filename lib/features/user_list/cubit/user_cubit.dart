@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:github_user_finder/features/user_list/interfaces/user_list_interface.dart';
 import 'package:github_user_finder/models/models.dart';
 import 'package:injectable/injectable.dart';
@@ -17,6 +18,8 @@ class UserCubit extends Cubit<UserState> {
   final userList = List<UserModel>.empty(growable: true);
 
   int currentPage = 1;
+
+  final searchController = TextEditingController();
 
   Future<void> fetchNewData({
     required String query,

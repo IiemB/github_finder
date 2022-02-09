@@ -26,7 +26,7 @@ class RepositoryModel with _$RepositoryModel {
     @Default('') String? url,
     @Default('') String? html_url,
     @Default(false) bool? private,
-    @Default('') String? descriptions,
+    @Default('') String? description,
   }) = _RepositoryModel;
 
   factory RepositoryModel.fromJson(Map<String, dynamic> data) =>

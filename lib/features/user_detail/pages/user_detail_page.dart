@@ -41,26 +41,33 @@ class UserDetailPage extends StatelessWidget {
                   ),
                 ),
               ),
-              ListTile(
-                title: const Text('Name'),
-                subtitle: Text(userModel.login!),
-              ),
-              ListTile(
-                title: const Text('Id'),
-                subtitle: Text(userModel.id.toString()),
-              ),
-              ListTile(
-                title: const Text('Type'),
-                subtitle: Text(userModel.type!),
-              ),
-              ListTile(
-                title: const Text('Score'),
-                subtitle: Text(userModel.score.toString()),
-              ),
-              ListTile(
-                onTap: () async => await launch(userModel.html_url!),
-                title: const Text('Url'),
-                subtitle: Text(userModel.html_url!),
+              Expanded(
+                child: ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    ListTile(
+                      title: const Text('Name'),
+                      subtitle: Text(userModel.login!),
+                    ),
+                    ListTile(
+                      title: const Text('Id'),
+                      subtitle: Text(userModel.id.toString()),
+                    ),
+                    ListTile(
+                      title: const Text('Type'),
+                      subtitle: Text(userModel.type!),
+                    ),
+                    ListTile(
+                      title: const Text('Score'),
+                      subtitle: Text(userModel.score.toString()),
+                    ),
+                    ListTile(
+                      onTap: () async => await launch(userModel.html_url!),
+                      title: const Text('Url'),
+                      subtitle: Text(userModel.html_url!),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

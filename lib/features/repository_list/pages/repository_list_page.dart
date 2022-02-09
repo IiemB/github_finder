@@ -94,7 +94,8 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
                       size: 100,
                     ),
                   ),
-                  initial: (data) => Center(child: Text(data.data)),
+                  initial: (data) =>
+                      const Center(child: Icon(Icons.search, size: 100)),
                   loading: (data) =>
                       const Center(child: CircularProgressIndicator()),
                   error: (data) => Center(child: Text(data.errorMessage)),

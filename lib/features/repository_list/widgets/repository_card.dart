@@ -42,7 +42,7 @@ class RepositoryCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     Text(
-                      repositoryModel.descriptions!,
+                      repositoryModel.description!,
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ],
