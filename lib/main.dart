@@ -21,7 +21,10 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => getIt<UserCubit>()),
         BlocProvider(create: (context) => getIt<RepositoryCubit>()),
-        BlocProvider(create: (context) => getIt<ChangeThemeCubit>()),
+        BlocProvider(
+          create: (context) =>
+              getIt<ChangeThemeCubit>()..updateIsDarkMode(context),
+        ),
       ],
       child: BlocBuilder<ChangeThemeCubit, ThemeMode>(
         builder: (context, state) {
