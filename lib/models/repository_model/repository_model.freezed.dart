@@ -201,22 +201,24 @@ class _$RepositoryModelTearOff {
 
   _RepositoryModel call(
       {int? id = 0,
-      String? login = '',
+      UserModel? owner,
+      String? name = '',
       String? node_id = '',
-      String? avatar_url = '',
+      String? full_name = '',
       String? url = '',
       String? html_url = '',
-      String? type = '',
-      double? score = 0.0}) {
+      bool? private = false,
+      String? descriptions = ''}) {
     return _RepositoryModel(
       id: id,
-      login: login,
+      owner: owner,
+      name: name,
       node_id: node_id,
-      avatar_url: avatar_url,
+      full_name: full_name,
       url: url,
       html_url: html_url,
-      type: type,
-      score: score,
+      private: private,
+      descriptions: descriptions,
     );
   }
 
@@ -231,13 +233,14 @@ const $RepositoryModel = _$RepositoryModelTearOff();
 /// @nodoc
 mixin _$RepositoryModel {
   int? get id => throw _privateConstructorUsedError;
-  String? get login => throw _privateConstructorUsedError;
+  UserModel? get owner => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String? get node_id => throw _privateConstructorUsedError;
-  String? get avatar_url => throw _privateConstructorUsedError;
+  String? get full_name => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get html_url => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
-  double? get score => throw _privateConstructorUsedError;
+  bool? get private => throw _privateConstructorUsedError;
+  String? get descriptions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -252,13 +255,16 @@ abstract class $RepositoryModelCopyWith<$Res> {
       _$RepositoryModelCopyWithImpl<$Res>;
   $Res call(
       {int? id,
-      String? login,
+      UserModel? owner,
+      String? name,
       String? node_id,
-      String? avatar_url,
+      String? full_name,
       String? url,
       String? html_url,
-      String? type,
-      double? score});
+      bool? private,
+      String? descriptions});
+
+  $UserModelCopyWith<$Res>? get owner;
 }
 
 /// @nodoc
@@ -273,30 +279,35 @@ class _$RepositoryModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? login = freezed,
+    Object? owner = freezed,
+    Object? name = freezed,
     Object? node_id = freezed,
-    Object? avatar_url = freezed,
+    Object? full_name = freezed,
     Object? url = freezed,
     Object? html_url = freezed,
-    Object? type = freezed,
-    Object? score = freezed,
+    Object? private = freezed,
+    Object? descriptions = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      login: login == freezed
-          ? _value.login
-          : login // ignore: cast_nullable_to_non_nullable
+      owner: owner == freezed
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       node_id: node_id == freezed
           ? _value.node_id
           : node_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar_url: avatar_url == freezed
-          ? _value.avatar_url
-          : avatar_url // ignore: cast_nullable_to_non_nullable
+      full_name: full_name == freezed
+          ? _value.full_name
+          : full_name // ignore: cast_nullable_to_non_nullable
               as String?,
       url: url == freezed
           ? _value.url
@@ -306,15 +317,26 @@ class _$RepositoryModelCopyWithImpl<$Res>
           ? _value.html_url
           : html_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      private: private == freezed
+          ? _value.private
+          : private // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      descriptions: descriptions == freezed
+          ? _value.descriptions
+          : descriptions // ignore: cast_nullable_to_non_nullable
               as String?,
-      score: score == freezed
-          ? _value.score
-          : score // ignore: cast_nullable_to_non_nullable
-              as double?,
     ));
+  }
+
+  @override
+  $UserModelCopyWith<$Res>? get owner {
+    if (_value.owner == null) {
+      return null;
+    }
+
+    return $UserModelCopyWith<$Res>(_value.owner!, (value) {
+      return _then(_value.copyWith(owner: value));
+    });
   }
 }
 
@@ -327,13 +349,17 @@ abstract class _$RepositoryModelCopyWith<$Res>
   @override
   $Res call(
       {int? id,
-      String? login,
+      UserModel? owner,
+      String? name,
       String? node_id,
-      String? avatar_url,
+      String? full_name,
       String? url,
       String? html_url,
-      String? type,
-      double? score});
+      bool? private,
+      String? descriptions});
+
+  @override
+  $UserModelCopyWith<$Res>? get owner;
 }
 
 /// @nodoc
@@ -350,30 +376,35 @@ class __$RepositoryModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? login = freezed,
+    Object? owner = freezed,
+    Object? name = freezed,
     Object? node_id = freezed,
-    Object? avatar_url = freezed,
+    Object? full_name = freezed,
     Object? url = freezed,
     Object? html_url = freezed,
-    Object? type = freezed,
-    Object? score = freezed,
+    Object? private = freezed,
+    Object? descriptions = freezed,
   }) {
     return _then(_RepositoryModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      login: login == freezed
-          ? _value.login
-          : login // ignore: cast_nullable_to_non_nullable
+      owner: owner == freezed
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       node_id: node_id == freezed
           ? _value.node_id
           : node_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar_url: avatar_url == freezed
-          ? _value.avatar_url
-          : avatar_url // ignore: cast_nullable_to_non_nullable
+      full_name: full_name == freezed
+          ? _value.full_name
+          : full_name // ignore: cast_nullable_to_non_nullable
               as String?,
       url: url == freezed
           ? _value.url
@@ -383,14 +414,14 @@ class __$RepositoryModelCopyWithImpl<$Res>
           ? _value.html_url
           : html_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      private: private == freezed
+          ? _value.private
+          : private // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      descriptions: descriptions == freezed
+          ? _value.descriptions
+          : descriptions // ignore: cast_nullable_to_non_nullable
               as String?,
-      score: score == freezed
-          ? _value.score
-          : score // ignore: cast_nullable_to_non_nullable
-              as double?,
     ));
   }
 }
@@ -400,13 +431,14 @@ class __$RepositoryModelCopyWithImpl<$Res>
 class _$_RepositoryModel implements _RepositoryModel {
   _$_RepositoryModel(
       {this.id = 0,
-      this.login = '',
+      this.owner,
+      this.name = '',
       this.node_id = '',
-      this.avatar_url = '',
+      this.full_name = '',
       this.url = '',
       this.html_url = '',
-      this.type = '',
-      this.score = 0.0});
+      this.private = false,
+      this.descriptions = ''});
 
   factory _$_RepositoryModel.fromJson(Map<String, dynamic> json) =>
       _$$_RepositoryModelFromJson(json);
@@ -414,15 +446,17 @@ class _$_RepositoryModel implements _RepositoryModel {
   @JsonKey()
   @override
   final int? id;
+  @override
+  final UserModel? owner;
   @JsonKey()
   @override
-  final String? login;
+  final String? name;
   @JsonKey()
   @override
   final String? node_id;
   @JsonKey()
   @override
-  final String? avatar_url;
+  final String? full_name;
   @JsonKey()
   @override
   final String? url;
@@ -431,14 +465,14 @@ class _$_RepositoryModel implements _RepositoryModel {
   final String? html_url;
   @JsonKey()
   @override
-  final String? type;
+  final bool? private;
   @JsonKey()
   @override
-  final double? score;
+  final String? descriptions;
 
   @override
   String toString() {
-    return 'RepositoryModel(id: $id, login: $login, node_id: $node_id, avatar_url: $avatar_url, url: $url, html_url: $html_url, type: $type, score: $score)';
+    return 'RepositoryModel(id: $id, owner: $owner, name: $name, node_id: $node_id, full_name: $full_name, url: $url, html_url: $html_url, private: $private, descriptions: $descriptions)';
   }
 
   @override
@@ -447,27 +481,29 @@ class _$_RepositoryModel implements _RepositoryModel {
         (other.runtimeType == runtimeType &&
             other is _RepositoryModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.login, login) &&
+            const DeepCollectionEquality().equals(other.owner, owner) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.node_id, node_id) &&
-            const DeepCollectionEquality()
-                .equals(other.avatar_url, avatar_url) &&
+            const DeepCollectionEquality().equals(other.full_name, full_name) &&
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.html_url, html_url) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.score, score));
+            const DeepCollectionEquality().equals(other.private, private) &&
+            const DeepCollectionEquality()
+                .equals(other.descriptions, descriptions));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(login),
+      const DeepCollectionEquality().hash(owner),
+      const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(node_id),
-      const DeepCollectionEquality().hash(avatar_url),
+      const DeepCollectionEquality().hash(full_name),
       const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(html_url),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(score));
+      const DeepCollectionEquality().hash(private),
+      const DeepCollectionEquality().hash(descriptions));
 
   @JsonKey(ignore: true)
   @override
@@ -483,13 +519,14 @@ class _$_RepositoryModel implements _RepositoryModel {
 abstract class _RepositoryModel implements RepositoryModel {
   factory _RepositoryModel(
       {int? id,
-      String? login,
+      UserModel? owner,
+      String? name,
       String? node_id,
-      String? avatar_url,
+      String? full_name,
       String? url,
       String? html_url,
-      String? type,
-      double? score}) = _$_RepositoryModel;
+      bool? private,
+      String? descriptions}) = _$_RepositoryModel;
 
   factory _RepositoryModel.fromJson(Map<String, dynamic> json) =
       _$_RepositoryModel.fromJson;
@@ -497,19 +534,21 @@ abstract class _RepositoryModel implements RepositoryModel {
   @override
   int? get id;
   @override
-  String? get login;
+  UserModel? get owner;
+  @override
+  String? get name;
   @override
   String? get node_id;
   @override
-  String? get avatar_url;
+  String? get full_name;
   @override
   String? get url;
   @override
   String? get html_url;
   @override
-  String? get type;
+  bool? get private;
   @override
-  double? get score;
+  String? get descriptions;
   @override
   @JsonKey(ignore: true)
   _$RepositoryModelCopyWith<_RepositoryModel> get copyWith =>

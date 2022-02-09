@@ -26,23 +26,27 @@ Map<String, dynamic> _$$_ResponseRepositoryModelToJson(
 _$_RepositoryModel _$$_RepositoryModelFromJson(Map<String, dynamic> json) =>
     _$_RepositoryModel(
       id: json['id'] as int? ?? 0,
-      login: json['login'] as String? ?? '',
+      owner: json['owner'] == null
+          ? null
+          : UserModel.fromJson(json['owner'] as Map<String, dynamic>),
+      name: json['name'] as String? ?? '',
       node_id: json['node_id'] as String? ?? '',
-      avatar_url: json['avatar_url'] as String? ?? '',
+      full_name: json['full_name'] as String? ?? '',
       url: json['url'] as String? ?? '',
       html_url: json['html_url'] as String? ?? '',
-      type: json['type'] as String? ?? '',
-      score: (json['score'] as num?)?.toDouble() ?? 0.0,
+      private: json['private'] as bool? ?? false,
+      descriptions: json['descriptions'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_RepositoryModelToJson(_$_RepositoryModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'login': instance.login,
+      'owner': instance.owner,
+      'name': instance.name,
       'node_id': instance.node_id,
-      'avatar_url': instance.avatar_url,
+      'full_name': instance.full_name,
       'url': instance.url,
       'html_url': instance.html_url,
-      'type': instance.type,
-      'score': instance.score,
+      'private': instance.private,
+      'descriptions': instance.descriptions,
     };

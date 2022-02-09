@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:github_user_finder/models/user_model/user_model.dart';
 
 part 'repository_model.freezed.dart';
 part 'repository_model.g.dart';
@@ -18,13 +19,14 @@ class ResponseRepositoryModel with _$ResponseRepositoryModel {
 class RepositoryModel with _$RepositoryModel {
   factory RepositoryModel({
     @Default(0) int? id,
-    @Default('') String? login,
+    UserModel? owner,
+    @Default('') String? name,
     @Default('') String? node_id,
-    @Default('') String? avatar_url,
+    @Default('') String? full_name,
     @Default('') String? url,
     @Default('') String? html_url,
-    @Default('') String? type,
-    @Default(0.0) double? score,
+    @Default(false) bool? private,
+    @Default('') String? descriptions,
   }) = _RepositoryModel;
 
   factory RepositoryModel.fromJson(Map<String, dynamic> data) =>

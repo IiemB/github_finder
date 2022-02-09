@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:github_user_finder/features/repository_list/pages/repository_list_page.dart';
 import 'package:github_user_finder/features/user_list/pages/user_list_page.dart';
 import 'package:github_user_finder/utils/utils.dart';
 
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => Navigator.pushNamed(
                   context,
-                  UserListPage.routeName,
+                  RepositoryListPage.routeName,
                 ),
                 child: const Text('Search Repository'),
               ),

@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RepositoryStateTearOff {
   const _$RepositoryStateTearOff();
 
-  Initial initial() {
-    return const Initial();
+  Initial initial(String data) {
+    return Initial(
+      data,
+    );
   }
 
   Loading loading() {
@@ -46,7 +48,7 @@ const $RepositoryState = _$RepositoryStateTearOff();
 mixin _$RepositoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String data) initial,
     required TResult Function() loading,
     required TResult Function(List<RepositoryModel> repositories) fetchedData,
     required TResult Function(String errorMessage) error,
@@ -54,7 +56,7 @@ mixin _$RepositoryState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
@@ -62,7 +64,7 @@ mixin _$RepositoryState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
@@ -117,6 +119,7 @@ class _$RepositoryStateCopyWithImpl<$Res>
 abstract class $InitialCopyWith<$Res> {
   factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
       _$InitialCopyWithImpl<$Res>;
+  $Res call({String data});
 }
 
 /// @nodoc
@@ -127,60 +130,83 @@ class _$InitialCopyWithImpl<$Res> extends _$RepositoryStateCopyWithImpl<$Res>
 
   @override
   Initial get _value => super._value as Initial;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(Initial(
+      data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$Initial implements Initial {
-  const _$Initial();
+  const _$Initial(this.data);
+
+  @override
+  final String data;
 
   @override
   String toString() {
-    return 'RepositoryState.initial()';
+    return 'RepositoryState.initial(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Initial);
+        (other.runtimeType == runtimeType &&
+            other is Initial &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  $InitialCopyWith<Initial> get copyWith =>
+      _$InitialCopyWithImpl<Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String data) initial,
     required TResult Function() loading,
     required TResult Function(List<RepositoryModel> repositories) fetchedData,
     required TResult Function(String errorMessage) error,
   }) {
-    return initial();
+    return initial(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
   }) {
-    return initial?.call();
+    return initial?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(data);
     }
     return orElse();
   }
@@ -224,7 +250,11 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements RepositoryState {
-  const factory Initial() = _$Initial;
+  const factory Initial(String data) = _$Initial;
+
+  String get data;
+  @JsonKey(ignore: true)
+  $InitialCopyWith<Initial> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -265,7 +295,7 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String data) initial,
     required TResult Function() loading,
     required TResult Function(List<RepositoryModel> repositories) fetchedData,
     required TResult Function(String errorMessage) error,
@@ -276,7 +306,7 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
@@ -287,7 +317,7 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
@@ -407,7 +437,7 @@ class _$FetchedData implements FetchedData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String data) initial,
     required TResult Function() loading,
     required TResult Function(List<RepositoryModel> repositories) fetchedData,
     required TResult Function(String errorMessage) error,
@@ -418,7 +448,7 @@ class _$FetchedData implements FetchedData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
@@ -429,7 +459,7 @@ class _$FetchedData implements FetchedData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
@@ -551,7 +581,7 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String data) initial,
     required TResult Function() loading,
     required TResult Function(List<RepositoryModel> repositories) fetchedData,
     required TResult Function(String errorMessage) error,
@@ -562,7 +592,7 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,
@@ -573,7 +603,7 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String data)? initial,
     TResult Function()? loading,
     TResult Function(List<RepositoryModel> repositories)? fetchedData,
     TResult Function(String errorMessage)? error,

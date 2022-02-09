@@ -8,15 +8,15 @@ part 'user_state.dart';
 
 @injectable
 class UserCubit extends Cubit<UserState> {
+  UserCubit(
+    this._userListInterface,
+  ) : super(UserStateInital('Initial State'));
+
   final UserListInterface _userListInterface;
 
   final userList = List<UserModel>.empty(growable: true);
 
   int currentPage = 1;
-
-  UserCubit(
-    this._userListInterface,
-  ) : super(UserStateInital('Initial State'));
 
   Future<void> fetchNewData({
     required String query,
